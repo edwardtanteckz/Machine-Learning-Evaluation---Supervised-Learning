@@ -1,0 +1,895 @@
+
+============================================================
+Data Preprocessing...
+============================================================
+
+Loading and processing data from: C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\data/adult.csv
+
+✓ Loaded 45222 samples
+✓ Features: 14
+✓ Shape: (45222, 15)
+✓ Preprocessed scaled data shape: (45222, 96)
+✓ Preprocessed label-encoded data shape: (45222, 14)
+⚠ WARNING: 13 overlapping samples detected!
+
+Class weights:
+  Class 0: 0.665
+  Class 1: 2.017
+
+Final shapes (Adult Income):
+  Scaled X data (Train : Test): (36177, 96) : (9045, 96)
+  X data (Train : Test): (36177, 14) : (9045, 14)
+  Y data (Train : Test): (36177,) : (9045,)
+
+============================================================
+Tuning hyperparameters for dt using Search=random and Interation=30.
+============================================================
+Parameter samples: 30
+CV folds: 5
+Primary metric: f1
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Random search completed in 4.10s
+
+Best parameters:
+  min_samples_split: 20
+  min_samples_leaf: 1
+  max_depth: 10
+  criterion: gini
+  class_weight: balanced
+  ccp_alpha: 0.0001
+
+Best CV score: 0.6813
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_dt_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: dt
+============================================================
+Accuracy:  0.8029
+Precision: 0.5687
+Recall:    0.8470
+F1:        0.6805
+ROC-AUC:   0.9035
+PR-AUC:    0.7700
+
+Timing:
+Fit time:     0.0818s
+Predict time: 0.000000s
+
+============================================================
+Generating Curves: dt
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 0.7066 ± 0.0024
+  Valuation Result:   0.6812 ± 0.0106
+  Gap:   0.0254
+  → Balanced
+ccp_alpha = 0.0... Train: 0.7737, Val: 0.6557
+ccp_alpha = 0.0001... Train: 0.7155, Val: 0.6729
+ccp_alpha = 0.0005... Train: 0.6577, Val: 0.6502
+ccp_alpha = 0.001... Train: 0.6482, Val: 0.6443
+ccp_alpha = 0.005... Train: 0.5961, Val: 0.5959
+ccp_alpha = 0.01... Train: 0.5961, Val: 0.5959
+ccp_alpha = 0.05... Train: 0.0000, Val: 0.0000
+ccp_alpha = 0.1... Train: 0.0000, Val: 0.0000
+
+✓ Complexity curve generated
+
+Best ccp_alpha: 0.0001
+Best validation score: 0.6729
+Complete time for dt: 6.65s
+
+============================================================
+Tuning hyperparameters for knn using Search=random and Interation=30.
+============================================================
+Parameter samples: 30
+CV folds: 5
+Primary metric: f1
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Random search completed in 650.50s
+
+Best parameters:
+  weights: distance
+  p: 2
+  n_neighbors: 51
+  metric: euclidean
+
+Best CV score: 0.6553
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_knn_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: knn
+============================================================
+Accuracy:  0.8348
+Precision: 0.6924
+Recall:    0.6004
+F1:        0.6431
+ROC-AUC:   0.8914
+PR-AUC:    0.7387
+
+Timing:
+Fit time:     0.0032s
+Predict time: 3.470825s
+
+============================================================
+Generating Curves: knn
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 0.9998 ± 0.0001
+  Valuation Result:   0.6553 ± 0.0047
+  Gap:   0.3445
+  → High variance (overfitting)
+n_neighbors = 3... Train: 0.7937, Val: 0.6302
+n_neighbors = 5... Train: 0.7489, Val: 0.6389
+n_neighbors = 11... Train: 0.7090, Val: 0.6467
+n_neighbors = 21... Train: 0.6865, Val: 0.6533
+n_neighbors = 51... Train: 0.6670, Val: 0.6533
+n_neighbors = 75... Train: 0.6595, Val: 0.6512
+n_neighbors = 101... Train: 0.6539, Val: 0.6481
+
+✓ Complexity curve generated
+
+Best n_neighbors: 51
+Best validation score: 0.6533
+Complete time for knn: 718.13s
+
+============================================================
+Tuning hyperparameters for svm using Search=random and Interation=10.
+============================================================
+Parameter samples: 10
+CV folds: 3
+Primary metric: f1
+Fitting 3 folds for each of 10 candidates, totalling 30 fits
+
+✓ Random search completed in 108.44s
+
+Best parameters:
+  kernel: linear
+  gamma: 0.001
+  class_weight: None
+  C: 0.01
+
+Best CV score: 0.5205
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_svm_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: svm
+============================================================
+Accuracy:  0.2479
+Precision: 0.2479
+Recall:    1.0000
+F1:        0.3973
+ROC-AUC:   0.8248
+PR-AUC:    0.6064
+
+Timing:
+Fit time:     12.7840s
+Predict time: 0.190176s
+
+============================================================
+Generating Curves: svm
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 0.3972 ± 0.0000
+  Valuation Result:   0.3972 ± 0.0001
+  Gap:   0.0000
+  → High bias (underfitting)
+C = 0.001... Train: 0.5161, Val: 0.5147
+C = 0.01... Train: 0.5167, Val: 0.5164
+C = 0.1... Train: 0.4968, Val: 0.4988
+C = 1.0... Train: 0.5024, Val: 0.5006
+C = 10.0... Train: 0.4555, Val: 0.4503
+C = 100.0... Train: 0.3828, Val: 0.3811
+C = 1000.0... Train: 0.4075, Val: 0.4110
+
+✓ Complexity curve generated
+
+Best C: 0.01
+Best validation score: 0.5164
+Complete time for svm: 824.13s
+
+============================================================
+Tuning hyperparameters for nn_sklearn using Search=random and Interation=30.
+============================================================
+Parameter samples: 30
+CV folds: 5
+Primary metric: f1
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Random search completed in 74.11s
+
+Best parameters:
+  validation_fraction: 0.1
+  n_iter_no_change: 10
+  max_iter: 500
+  learning_rate_init: 0.1
+  hidden_layer_sizes: (100, 50)
+  early_stopping: True
+  batch_size: 128
+  alpha: 0.001
+
+Best CV score: 0.6837
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_nn_sklearn_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: nn_sklearn
+============================================================
+Accuracy:  0.8515
+Precision: 0.7271
+Recall:    0.6418
+F1:        0.6818
+ROC-AUC:   0.9109
+PR-AUC:    0.7874
+
+Timing:
+Fit time:     4.1763s
+Predict time: 0.006508s
+
+============================================================
+Generating Curves: nn_sklearn
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 0.6969 ± 0.0090
+  Valuation Result:   0.6768 ± 0.0104
+  Gap:   0.0201
+  → Balanced
+hidden_layer_sizes = (10,)... Train: 0.6780, Val: 0.6732
+hidden_layer_sizes = (25,)... Train: 0.6816, Val: 0.6765
+hidden_layer_sizes = (50,)... Train: 0.6800, Val: 0.6747
+hidden_layer_sizes = (100,)... Train: 0.6811, Val: 0.6740
+hidden_layer_sizes = (200,)... Train: 0.6933, Val: 0.6843
+hidden_layer_sizes = (400,)... Train: 0.6885, Val: 0.6801
+
+✓ Complexity curve generated
+
+Best hidden_layer_sizes: (200,)
+Best validation score: 0.6843
+Complete time for nn_sklearn: 108.00s
+
+============================================================
+Tuning hyperparameters for NN Pytorch using Configuration=10.
+============================================================
+
+[1/10] Testing configuration:
+  Hidden layers: [50, 50]
+  Learning rate: 0.001
+  Weight decay: 0.001
+  Batch size: 128
+    Fold 1/5: 0.5912
+    Fold 2/5: 0.6170
+    Fold 3/5: 0.6035
+    Fold 4/5: 0.5537
+    Fold 5/5: 0.6025
+  → CV Score: 0.5936 ± 0.0215
+
+[2/10] Testing configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.001
+  Weight decay: 0.001
+  Batch size: 64
+    Fold 1/5: 0.6671
+    Fold 2/5: 0.6575
+    Fold 3/5: 0.6509
+    Fold 4/5: 0.6605
+    Fold 5/5: 0.6383
+  → CV Score: 0.6549 ± 0.0098
+
+[3/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.1
+  Weight decay: 0.001
+  Batch size: 128
+Early stopping at epoch 37
+    Fold 1/5: 0.6831
+    Fold 2/5: 0.7089
+Early stopping at epoch 28
+    Fold 3/5: 0.7019
+    Fold 4/5: 0.6603
+    Fold 5/5: 0.6488
+  → CV Score: 0.6806 ± 0.0232
+
+[4/10] Testing configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.1
+  Weight decay: 0.0001
+  Batch size: 32
+Early stopping at epoch 29
+    Fold 1/5: 0.6708
+Early stopping at epoch 47
+    Fold 2/5: 0.6810
+Early stopping at epoch 32
+    Fold 3/5: 0.7050
+Early stopping at epoch 47
+    Fold 4/5: 0.6939
+Early stopping at epoch 34
+    Fold 5/5: 0.6774
+  → CV Score: 0.6856 ± 0.0123
+
+[5/10] Testing configuration:
+  Hidden layers: [100]
+  Learning rate: 0.01
+  Weight decay: 0.0001
+  Batch size: 64
+    Fold 1/5: 0.6764
+    Fold 2/5: 0.6881
+    Fold 3/5: 0.6648
+    Fold 4/5: 0.6889
+    Fold 5/5: 0.6625
+  → CV Score: 0.6761 ± 0.0112
+
+[6/10] Testing configuration:
+  Hidden layers: [50, 50]
+  Learning rate: 0.001
+  Weight decay: 0.0
+  Batch size: 64
+    Fold 1/5: 0.6609
+    Fold 2/5: 0.6667
+    Fold 3/5: 0.6490
+    Fold 4/5: 0.6589
+    Fold 5/5: 0.6409
+  → CV Score: 0.6552 ± 0.0092
+
+[7/10] Testing configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.001
+  Weight decay: 0.0
+  Batch size: 128
+    Fold 1/5: 0.5924
+    Fold 2/5: 0.5869
+    Fold 3/5: 0.5877
+    Fold 4/5: 0.6230
+    Fold 5/5: 0.5902
+  → CV Score: 0.5961 ± 0.0136
+
+[8/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.1
+  Weight decay: 0.0001
+  Batch size: 128
+Early stopping at epoch 34
+    Fold 1/5: 0.6741
+    Fold 2/5: 0.5654
+Early stopping at epoch 34
+    Fold 3/5: 0.7038
+Early stopping at epoch 42
+    Fold 4/5: 0.6958
+Early stopping at epoch 45
+    Fold 5/5: 0.6338
+  → CV Score: 0.6546 ± 0.0508
+
+[9/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.1
+  Weight decay: 0.01
+  Batch size: 32
+Early stopping at epoch 24
+    Fold 1/5: 0.6991
+Early stopping at epoch 25
+    Fold 2/5: 0.6529
+Early stopping at epoch 44
+    Fold 3/5: 0.6604
+Early stopping at epoch 38
+    Fold 4/5: 0.6296
+    Fold 5/5: 0.6622
+  → CV Score: 0.6608 ± 0.0224
+
+[10/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.001
+  Weight decay: 0.001
+  Batch size: 128
+    Fold 1/5: 0.6256
+    Fold 2/5: 0.6219
+    Fold 3/5: 0.6232
+    Fold 4/5: 0.6256
+    Fold 5/5: 0.6065
+  → CV Score: 0.6205 ± 0.0071
+
+Best configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.1
+  Weight decay: 0.0001
+  Batch size: 32
+  CV Score: 0.6856
+
+============================================================
+TRAINING BEST MODEL
+============================================================
+Early stopping at epoch 34
+
+Training info:
+  Epochs trained: 34
+  Best epoch: 13
+  Final train loss: 0.2872
+  Final val loss: 0.3249
+
+============================================================
+TEST SET EVALUATION FOR Dataset: adult
+============================================================
+
+Test Set Metrics:
+  Accuracy:  0.8420
+  Precision: 0.6660
+  Recall:    0.7275
+  F1:        0.6954
+  ROC-AUC:   0.9079
+  PR-AUC:    0.7807
+
+================================================================================
+SAVING RESULTS
+================================================================================
+✓ Best parameters saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_nn_pytorch_best_params.json
+✓ Tuning results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_nn_pytorch_tuning_results.csv
+✓ Training curves saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_nn_pytorch_training_curves.json
+✓ Test metrics saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_nn_pytorch_test_metrics.json
+✓ Model saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/adult_nn_pytorch_best_model.pth
+
+✓ All PyTorch results saved
+
+============================================================
+Data Preprocessing...
+============================================================
+
+Loading and processing data from: C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\data/wine.csv
+✓ Loaded 6497 samples
+✓ Features: 13
+✓ Shape: (6497, 14)
+✓ Preprocessed scaled data shape: (6497, 13)
+✓ Preprocessed label-encoded data shape: (6497, 13)
+⚠ WARNING: 385 overlapping samples detected!
+
+Class weights:
+  Class 0: 40.602
+  Class 1: 4.997
+  Class 2: 0.553
+  Class 3: 0.361
+  Class 4: 0.520
+  Class 5: 0.999
+  Class 6: 3.985
+  Class 7: 46.402
+
+Final shapes (Wine Quality):
+  Scaled X data (Train : Test): (5197, 13) : (1300, 13)
+  X data (Train : Test): (5197, 13) : (1300, 13)
+  Y data (Train : Test): (5197,) : (1300,)
+
+============================================================
+Tuning hyperparameters for dt using Search=random and Interation=30.
+============================================================
+Parameter samples: 30
+CV folds: 5
+Primary metric: macro_f1
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Random search completed in 2.69s
+
+Best parameters:
+  min_samples_split: 10
+  min_samples_leaf: 2
+  max_depth: 10
+  criterion: gini
+  class_weight: balanced
+  ccp_alpha: 0.001
+
+Best CV score: 1.0000
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_dt_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: dt
+============================================================
+Accuracy:  1.0000
+Precision: 1.0000
+Recall:    1.0000
+Macro-F1:  1.0000
+Weighted-F1: 1.0000
+
+Timing:
+Fit time:     0.0080s
+Predict time: 0.001003s
+
+============================================================
+Generating Curves: dt
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1_macro
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 1.0000 ± 0.0000
+  Valuation Result:   1.0000 ± 0.0000
+  Gap:   0.0000
+  → Balanced
+ccp_alpha = 0.0... Train: 1.0000, Val: 1.0000
+ccp_alpha = 0.0001... Train: 1.0000, Val: 1.0000
+ccp_alpha = 0.0005... Train: 1.0000, Val: 1.0000
+ccp_alpha = 0.001... Train: 1.0000, Val: 1.0000
+ccp_alpha = 0.005... Train: 0.8959, Val: 0.8956
+ccp_alpha = 0.01... Train: 0.7376, Val: 0.7376
+ccp_alpha = 0.05... Train: 0.4777, Val: 0.4777
+ccp_alpha = 0.1... Train: 0.4777, Val: 0.4777
+
+✓ Complexity curve generated
+
+Best ccp_alpha: 0.0
+Best validation score: 1.0000
+Complete time for dt: 2.98s
+
+============================================================
+Tuning hyperparameters for knn using Search=random and Interation=30.
+============================================================
+Parameter samples: 30
+CV folds: 5
+Primary metric: macro_f1
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Random search completed in 42.55s
+
+Best parameters:
+  weights: distance
+  p: 1
+  n_neighbors: 5
+  metric: manhattan
+
+Best CV score: 0.6608
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_knn_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: knn
+============================================================
+Accuracy:  0.9169
+Precision: 0.7878
+Recall:    0.6521
+Macro-F1:  0.6848
+Weighted-F1: 0.9128
+
+Timing:
+Fit time:     0.0050s
+Predict time: 0.129607s
+
+============================================================
+Generating Curves: knn
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1_macro
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 1.0000 ± 0.0000
+  Valuation Result:   0.6608 ± 0.0441
+  Gap:   0.3392
+  → High variance (overfitting)
+n_neighbors = 3... Train: 0.8123, Val: 0.6114
+n_neighbors = 5... Train: 0.6773, Val: 0.5971
+n_neighbors = 11... Train: 0.5708, Val: 0.5303
+n_neighbors = 21... Train: 0.5142, Val: 0.4941
+n_neighbors = 51... Train: 0.4674, Val: 0.4570
+n_neighbors = 75... Train: 0.4460, Val: 0.4417
+n_neighbors = 101... Train: 0.4167, Val: 0.4057
+
+✓ Complexity curve generated
+
+Best n_neighbors: 3
+Best validation score: 0.6114
+Complete time for knn: 57.54s
+
+============================================================
+Tuning hyperparameters for svm using Search=random and Interation=10.
+============================================================
+Parameter samples: 10
+CV folds: 3
+Primary metric: macro_f1
+Fitting 3 folds for each of 10 candidates, totalling 30 fits
+
+✓ Random search completed in 18.00s
+
+Best parameters:
+  kernel: linear
+  gamma: 0.1
+  class_weight: balanced
+  C: 0.1
+
+Best CV score: 1.0000
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_svm_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: svm
+============================================================
+Accuracy:  1.0000
+Precision: 1.0000
+Recall:    1.0000
+Macro-F1:  1.0000
+Weighted-F1: 1.0000
+
+Timing:
+Fit time:     0.5170s
+Predict time: 0.027000s
+
+============================================================
+Generating Curves: svm
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1_macro
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 1.0000 ± 0.0000
+  Valuation Result:   1.0000 ± 0.0000
+  Gap:   0.0000
+  → Balanced
+C = 0.001... Train: 0.0643, Val: 0.0643
+C = 0.01... Train: 0.1289, Val: 0.1288
+C = 0.1... Train: 0.4525, Val: 0.4503
+C = 1.0... Train: 0.7915, Val: 0.7282
+C = 10.0... Train: 1.0000, Val: 0.8779
+C = 100.0... Train: 1.0000, Val: 0.8782
+C = 1000.0... Train: 1.0000, Val: 0.8782
+
+✓ Complexity curve generated
+
+Best C: 100.0
+Best validation score: 0.8782
+Complete time for svm: 56.57s
+
+============================================================
+Tuning hyperparameters for nn_sklearn using Search=random and Interation=30.
+============================================================
+Parameter samples: 30
+CV folds: 5
+Primary metric: macro_f1
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Random search completed in 85.49s
+
+Best parameters:
+  validation_fraction: 0.1
+  n_iter_no_change: 10
+  max_iter: 500
+  learning_rate_init: 0.1
+  hidden_layer_sizes: (100, 50)
+  early_stopping: True
+  batch_size: 128
+  alpha: 0.001
+
+Best CV score: 0.9327
+✓ CV results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_nn_sklearn_tuning_cv_results.csv
+
+============================================================
+Evaluation Metrics: nn_sklearn
+============================================================
+Accuracy:  0.9985
+Precision: 0.9956
+Recall:    0.9657
+Macro-F1:  0.9784
+Weighted-F1: 0.9984
+
+Timing:
+Fit time:     0.8970s
+Predict time: 0.002000s
+
+============================================================
+Generating Curves: nn_sklearn
+============================================================
+Computing learning curve...
+  Train sizes: [0.1  0.2  0.3  0.5  0.7  0.85 1.  ]
+  CV folds: 5
+  Scoring: f1_macro
+
+✓ Learning curve generated
+
+Final scores (max training size):
+  Train Result: 0.9717 ± 0.0509
+  Valuation Result:   0.9508 ± 0.0549
+  Gap:   0.0208
+  → Balanced
+hidden_layer_sizes = (10,)... Train: 0.7442, Val: 0.7239
+hidden_layer_sizes = (25,)... Train: 0.7275, Val: 0.7025
+hidden_layer_sizes = (50,)... Train: 0.7283, Val: 0.7101
+hidden_layer_sizes = (100,)... Train: 0.7306, Val: 0.7216
+hidden_layer_sizes = (200,)... Train: 0.7330, Val: 0.7132
+hidden_layer_sizes = (400,)... Train: 0.7378, Val: 0.7143
+
+✓ Complexity curve generated
+
+Best hidden_layer_sizes: (10,)
+Best validation score: 0.7239
+Complete time for nn_sklearn: 102.18s
+
+============================================================
+Tuning hyperparameters for NN Pytorch using Configuration=10.
+============================================================
+
+[1/10] Testing configuration:
+  Hidden layers: [50, 50]
+  Learning rate: 0.001
+  Weight decay: 0.001
+  Batch size: 128
+    Fold 1/5: 0.1653
+    Fold 2/5: 0.1243
+    Fold 3/5: 0.1248
+    Fold 4/5: 0.1268
+    Fold 5/5: 0.1518
+  → CV Score: 0.1386 ± 0.0169
+
+[2/10] Testing configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.001
+  Weight decay: 0.001
+  Batch size: 64
+    Fold 1/5: 0.2322
+    Fold 2/5: 0.2262
+    Fold 3/5: 0.2838
+    Fold 4/5: 0.2636
+    Fold 5/5: 0.2532
+  → CV Score: 0.2518 ± 0.0210
+
+[3/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.1
+  Weight decay: 0.001
+  Batch size: 128
+    Fold 1/5: 0.7721
+    Fold 2/5: 0.7206
+    Fold 3/5: 0.7172
+    Fold 4/5: 0.7268
+    Fold 5/5: 0.7318
+  → CV Score: 0.7337 ± 0.0198
+
+[4/10] Testing configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.1
+  Weight decay: 0.0001
+  Batch size: 32
+    Fold 1/5: 0.9731
+    Fold 2/5: 1.0000
+    Fold 3/5: 0.9973
+    Fold 4/5: 0.9726
+    Fold 5/5: 0.9726
+  → CV Score: 0.9831 ± 0.0127
+
+[5/10] Testing configuration:
+  Hidden layers: [100]
+  Learning rate: 0.01
+  Weight decay: 0.0001
+  Batch size: 64
+    Fold 1/5: 0.5040
+    Fold 2/5: 0.5431
+    Fold 3/5: 0.5007
+    Fold 4/5: 0.5267
+    Fold 5/5: 0.4941
+  → CV Score: 0.5137 ± 0.0183
+
+[6/10] Testing configuration:
+  Hidden layers: [50, 50]
+  Learning rate: 0.001
+  Weight decay: 0.0
+  Batch size: 64
+    Fold 1/5: 0.1691
+    Fold 2/5: 0.1762
+    Fold 3/5: 0.1322
+    Fold 4/5: 0.1636
+    Fold 5/5: 0.1391
+  → CV Score: 0.1560 ± 0.0173
+
+[7/10] Testing configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.001
+  Weight decay: 0.0
+  Batch size: 128
+    Fold 1/5: 0.1327
+    Fold 2/5: 0.1368
+    Fold 3/5: 0.1387
+    Fold 4/5: 0.1114
+    Fold 5/5: 0.1025
+  → CV Score: 0.1244 ± 0.0147
+
+[8/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.1
+  Weight decay: 0.0001
+  Batch size: 128
+    Fold 1/5: 0.7780
+    Fold 2/5: 0.7272
+    Fold 3/5: 0.7204
+    Fold 4/5: 0.7311
+    Fold 5/5: 0.7325
+  → CV Score: 0.7378 ± 0.0205
+
+[9/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.1
+  Weight decay: 0.01
+  Batch size: 32
+    Fold 1/5: 0.6716
+    Fold 2/5: 0.6392
+    Fold 3/5: 0.6954
+    Fold 4/5: 0.6754
+    Fold 5/5: 0.7247
+  → CV Score: 0.6813 ± 0.0282
+
+[10/10] Testing configuration:
+  Hidden layers: [200]
+  Learning rate: 0.001
+  Weight decay: 0.001
+  Batch size: 128
+    Fold 1/5: 0.2753
+    Fold 2/5: 0.2864
+    Fold 3/5: 0.2465
+    Fold 4/5: 0.2648
+    Fold 5/5: 0.2693
+  → CV Score: 0.2685 ± 0.0132
+
+Best configuration:
+  Hidden layers: [100, 50]
+  Learning rate: 0.1
+  Weight decay: 0.0001
+  Batch size: 32
+  CV Score: 0.9831
+
+============================================================
+TRAINING BEST MODEL
+============================================================
+
+Training info:
+  Epochs trained: 50
+  Best epoch: 49
+  Final train loss: 0.0013
+  Final val loss: 0.0013
+
+============================================================
+TEST SET EVALUATION FOR Dataset: wine
+============================================================
+
+Test Set Metrics:
+  Accuracy:  0.9992
+  Precision: 0.9963
+  Recall:    0.9688
+  Macro-F1:  0.9803
+
+================================================================================
+SAVING RESULTS
+================================================================================
+✓ Best parameters saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_nn_pytorch_best_params.json
+✓ Tuning results saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_nn_pytorch_tuning_results.csv
+✓ Training curves saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_nn_pytorch_training_curves.json
+✓ Test metrics saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_nn_pytorch_test_metrics.json
+✓ Model saved to C:\Users\tante\Documents\Gatech Masters\CS7641\cs-7641-2026-spring-etan74\sl\output/wine_nn_pytorch_best_model.pth
+
+✓ All PyTorch results saved
